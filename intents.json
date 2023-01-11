@@ -1,0 +1,19 @@
+{
+    "intents":[
+        {
+            "tag":"greetings",
+            "patterns":["Hi","How are you","Is anyone there?","Hello","Good day","Assalamu Alaykum"],
+            "responses":["Hello, Essalamu Alaykum","Good to see you again","Hi there, how can I help?"]
+        },
+        {
+            "tag":"name",
+            "patterns":["What is your name?","What should I call you?","What can I call you?"],
+            "responses":["My name is Glocal Bot","I am Glocal Bot","You can call me Glocal Bot"]
+        },
+        {
+            "tag":"event_results",
+            "patterns":["Tell, me the result", "result of", "What is the result of"],
+            "responses":[""]
+        }
+    ]
+}

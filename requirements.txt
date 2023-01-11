@@ -1,0 +1,6 @@
+tensorflow
+speech_recognition
+pyttsx3
+nltk
+pickle
+numpy
