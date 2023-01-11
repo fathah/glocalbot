@@ -10,11 +10,12 @@ speaker.setProperty('voice', voices[0].id)
 recognizer = speech_recognition.Recognizer()
 
 def event_results(response):
-    speaker.say('Here are the results of the event.')
+    speaker.say(f'Here are the results of the event. {response}')
     speaker.runAndWait()
 
-def greet():
-    speaker.say('Hello, I am Glocal Bot. What can I do for you?')
+def greet(response):
+    print(response)
+    speaker.say(f'{response}')
     speaker.runAndWait()
 
 mappings = {
