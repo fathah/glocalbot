@@ -9,11 +9,6 @@
             "tag":"name",
             "patterns":["What is your name?","What should I call you?","What can I call you?"],
             "responses":["My name is Glocal Bot","I am Glocal Bot","You can call me Glocal Bot"]
-        },
-        {
-            "tag":"event_results",
-            "patterns":["Tell, me the result", "result of", "What is the result of"],
-            "responses":[""]
         }
     ]
 }

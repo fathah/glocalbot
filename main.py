@@ -1,6 +1,7 @@
 import pyttsx3
 import speech_recognition
 from neuralintents.main import GenericAssistant
+from result_fetch import get_result,read_json
 
 speaker = pyttsx3.init()
 speaker.setProperty('rate', 110)
@@ -9,21 +10,41 @@ speaker.setProperty('voice', voices[0].id)
 
 recognizer = speech_recognition.Recognizer()
 
-def event_results(response):
-    speaker.say(f'Here are the results of the event. {response}')
-    speaker.runAndWait()
+
 
 def greet(response):
-    print(response)
     speaker.say(f'{response}')
     speaker.runAndWait()
 
+def tell_name(response):
+    speaker.say(f'{response}')
+    speaker.runAndWait() 
+
+def tell_result(text):
+    response = text.replace('result','').replace('of','')
+    programs = read_json("programs.json")
+    for program in programs['data']:
+        if  program['name'].lower() == response.lower():
+            if program['resultDeclared'] == "1":
+                response = f"Result of {program['name']} is declared."
+                break
+            else:
+                response = f"Result of {program['name']} is not declared yet."
+                break
+
+    speaker.say(f'Here are the results of the event. {response}')
+    speaker.runAndWait()
+
+
 mappings = {
     "greetings":greet,
-    "event_results":event_results }
+    "name":tell_name
+    }
 
 glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
 glocalbot.load_model()
+
+#get_result()
 
 while True:
     try:
@@ -33,7 +54,10 @@ while True:
              text = recognizer.recognize_google(audio)
              text =  text.lower()
 
-             glocalbot.request(text)
+             if "result" in text or "results" in text:
+                tell_result(text)
+             else:
+                glocalbot.request(text)
              
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()

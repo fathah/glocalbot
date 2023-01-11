@@ -4,3 +4,4 @@ pyttsx3
 nltk
 pickle
 numpy
+pysondb
