@@ -24,15 +24,19 @@ def tell_result(text):
     response = text.replace('result','').replace('of','')
     programs = read_json("programs.json")
     for program in programs['data']:
-        if  program['name'].lower() == response.lower():
+        if  program['name'].lower().replace(' ','') == response.lower().replace(' ',''):
+            print("YES",program['name'],response)
             if program['resultDeclared'] == "1":
                 response = f"Result of {program['name']} is declared."
                 break
             else:
                 response = f"Result of {program['name']} is not declared yet."
                 break
+        else:
+            print(program['name'],response)
+            pass
 
-    speaker.say(f'Here are the results of the event. {response}')
+    speaker.say(f'{response}')
     speaker.runAndWait()
 
 

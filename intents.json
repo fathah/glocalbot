@@ -9,6 +9,11 @@
             "tag":"name",
             "patterns":["What is your name?","What should I call you?","What can I call you?"],
             "responses":["My name is Glocal Bot","I am Glocal Bot","You can call me Glocal Bot"]
+        },
+        {
+            "tag":"about",
+            "patterns":["Introduce","Who are you?","What is your purpose?"],
+            "responses":["I am Glocal Bot, "]
         }
     ]
 }

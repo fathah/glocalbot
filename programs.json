@@ -63,7 +63,7 @@
             "addedOn": "2022-12-31 12:00:42",
             "type": "s",
             "isCompleted": null,
-            "resultDeclared": null,
+            "resultDeclared": "1",
             "rules": null,
             "topics": null
         },
