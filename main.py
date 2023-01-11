@@ -16,6 +16,11 @@ def greet(response):
     speaker.say(f'{response}')
     speaker.runAndWait()
 
+def introduce(response):
+    speaker.say(f'{response}')
+    speaker.runAndWait()
+
+
 def tell_name(response):
     speaker.say(f'{response}')
     speaker.runAndWait() 
@@ -25,7 +30,6 @@ def tell_result(text):
     programs = read_json("programs.json")
     for program in programs['data']:
         if  program['name'].lower().replace(' ','') == response.lower().replace(' ',''):
-            print("YES",program['name'],response)
             if program['resultDeclared'] == "1":
                 response = f"Result of {program['name']} is declared."
                 break
@@ -33,7 +37,6 @@ def tell_result(text):
                 response = f"Result of {program['name']} is not declared yet."
                 break
         else:
-            print(program['name'],response)
             pass
 
     speaker.say(f'{response}')
@@ -42,7 +45,8 @@ def tell_result(text):
 
 mappings = {
     "greetings":greet,
-    "name":tell_name
+    "name":tell_name,
+    "about":introduce
     }
 
 glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
