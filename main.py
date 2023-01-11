@@ -46,10 +46,12 @@ def tell_result(text):
 mappings = {
     "greetings":greet,
     "name":tell_name,
-    "about":introduce
+    "introduce":introduce
     }
 
 glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
+# glocalbot.train_model()
+# glocalbot.save_model()
 glocalbot.load_model()
 
 #get_result()

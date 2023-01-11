@@ -11,7 +11,7 @@
             "responses":["My name is Glocal Bot","I am Glocal Bot","You can call me Glocal Bot"]
         },
         {
-            "tag":"about",
+            "tag":"introduce",
             "patterns":["Introduce","Introduce yourself","Who are you?","What is your purpose?"],
             "responses":["I am Glocal Bot. I am an Artificial Intelligence powered robot who can hear you and respond wisely. I can learn about you. One of the prominent feature of me is, I can announce the result of the events held in Rendezvous. Also I can identify students data using their id's. I know all the students of Jamia Madeenathunnoor. I am learning constantly to become more powerful. Thanks for developing me. Essalamu Alaikum"]
         }
