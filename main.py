@@ -2,6 +2,7 @@ import pyttsx3
 import speech_recognition
 from neuralintents.main import GenericAssistant
 from result_fetch import get_result,read_json
+from scan import scanQr
 from utils import getProgramName, getStudentName
 
 speaker = pyttsx3.init()
@@ -11,7 +12,7 @@ speaker.setProperty('voice', voices[0].id)
 
 recognizer = speech_recognition.Recognizer()
 
-get_result()
+#get_result()
 
 
 def greet(response):
@@ -47,7 +48,7 @@ def tell_result(text):
                 for i in range(1,len(resultSorted)):
                     
                     response += f". and {getStudentName(resultSorted[i]['studentid'])} is selected with rank {resultSorted[i]['rank']}"
-                    
+
                 response += "Congratulations for the winners."
                 break
                 
@@ -84,6 +85,10 @@ while True:
 
              if "result" in text or "results" in text:
                 tell_result(text)
+             elif "scan" in text:
+                speaker.say("Please show your Jamia ID")
+                speaker.runAndWait()
+                print(scanQr())
              else:
                 glocalbot.request(text)
              
