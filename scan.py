@@ -10,7 +10,7 @@ def scanQr():
         _, frame = cap.read()
         decodedObjects = pyzbar.decode(frame)
         for obj in decodedObjects:
-            if "JM" in obj.data:
+            if "JM" in str(obj.data):
                 jmId = obj.data
                 return jmId
     
