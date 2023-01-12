@@ -22,6 +22,6 @@ def get_result():
     fetch_and_save(programsUrl, "programs.json")
     fetch_and_save(studentsUrl, "students.json")
     fetch_and_save(campusUrl, "campus.json")
-
+    print("Data Fetched")
 
     return True

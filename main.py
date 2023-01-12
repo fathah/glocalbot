@@ -1,8 +1,8 @@
+import random
 import pyttsx3
 import speech_recognition
-from neuralintents.main import GenericAssistant
 from result_fetch import get_result,read_json
-from scan import getStudentInfo, scanQr
+# from scan import getStudentInfo, scanQr
 from utils import getCampusName, getProgramName, getStudentName
 
 speaker = pyttsx3.init()
@@ -12,24 +12,14 @@ speaker.setProperty('voice', voices[0].id)
 
 recognizer = speech_recognition.Recognizer()
 
-get_result()
+#get_result()
 
 
-def greet(response):
+def respond(response):
     speaker.say(f'{response}')
     speaker.runAndWait()
 
-def introduce(response):
-    speaker.say(f'{response}')
-    speaker.runAndWait()
 
-def markazGarden(response):
-    speaker.say(f'{response}')
-    speaker.runAndWait()
-
-def tell_name(response):
-    speaker.say(f'{response}')
-    speaker.runAndWait() 
 
 def tell_result(text):
     response = text.replace('result','').replace('of','')
@@ -47,7 +37,7 @@ def tell_result(text):
                 response = f"Result of {program['name']} is declared. {getStudentName(resultSorted[0]['studentid'])} is selected  with rank {resultSorted[0]['rank']}"
                 for i in range(1,len(resultSorted)):
                     
-                    response += f". and {getStudentName(resultSorted[i]['studentid'])} is selected with rank {resultSorted[i]['rank']}."
+                    response += f". and {getStudentName(resultSorted[i]['studentid'])} is selected with rank {resultSorted[i]['rank']}\n"
 
                 response += "Congratulations for the winners."
                 break
@@ -63,21 +53,29 @@ def tell_result(text):
 
 
 mappings = {
-    "greetings":greet,
-    "name":tell_name,
-    "introduce":introduce,
-    "markaz_garden":markazGarden
+    "greetings":respond,
+    "name":respond,
+    "introduce":respond,
+    "markaz_garden":respond,
+    "thanks":respond,
     }
 
-glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
-#glocalbot.train_model()
-#glocalbot.save_model()
-glocalbot.load_model()
 
 
+def talkFromIntents(text):
+    intents = read_json("intents.json")['intents']
+    for intent in intents:
+        if intent['tag'] in mappings.keys() and text.lower() in intent['patterns']:
+            randomIndex = random.randint(0,len(intent['responses'])-1)
+            mappings[intent['tag']](intent['responses'][randomIndex].lower())
+        # else:
+        #     speaker.say(text)
+        #     speaker.runAndWait()
+        
 while True:
     try:
         with speech_recognition.Microphone() as mic:
+             print("started")
              recognizer.adjust_for_ambient_noise(mic, duration=0.2) 
              audio = recognizer.listen(mic,phrase_time_limit=5)
              text = recognizer.recognize_google(audio)
@@ -85,18 +83,16 @@ while True:
 
              if "result" in text or "results" in text:
                 tell_result(text)
-             elif "scan" in text:
-                speaker.say("Please show your Jamia ID")
-                speaker.runAndWait()
-                jmId = scanQr()
-                if "JM" in jmId:
-                    student  = getStudentInfo(jmId)
-                    speaker.say(f"Hello {student['name']} from {getCampusName(student['campus'])}")
+            #  elif "scan" in text:
+            #     speaker.say("Please show your Jamia ID")
+            #     speaker.runAndWait()
+            #     jmId = scanQr()
+            #     if "JM" in jmId:
+            #         student  = getStudentInfo(jmId)
+            #         speaker.say(f"Hello {student['name']} from {getCampusName(student['campus'])}")
 
-                    
-                
              else:
-                glocalbot.request(text)
+                talkFromIntents(text)
              
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()

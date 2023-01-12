@@ -1,3 +1,4 @@
+import re
 from result_fetch import get_result,read_json
 
 def getStudentName(id):
@@ -23,3 +24,6 @@ def getCampusName(id):
             return campus['name']
         else:
             pass
+
+def remove_symbols(text):
+    re.sub(r'[^\w]', ' ', text)

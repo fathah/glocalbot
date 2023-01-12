@@ -2,28 +2,50 @@
     "intents":[
         {
             "tag":"greetings",
-            "patterns":["Hi","How are you","Is anyone there?","Hello","Good day","Assalamu Alaykum"],
-            "responses":["Hello, Essalamu Alaykum","Good to see you again","Hi there, how can I help?"]
+            "patterns":["hi","how are you","is anyone there","hello","good day","assalamu alaykum", "Hi there",
+            "Hey",
+            "Hola",
+            "Namaste",
+            "yo"],
+            "responses":["hello, essalamu alaykum","good to see you again","hi there, how can i help"]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Awesome, thanks",
+                "Thanks for helping me"
+            ],
+            "responses": [
+                "Happy to help!",
+                "Any time!",
+                "My pleasure"
+            ],
+            "context": [
+                ""
+            ]
         },
         {
             "tag":"name",
-            "patterns":["What is your name?","What should I call you?","What can I call you?"],
-            "responses":["My name is Glocal Bot","I am Glocal Bot","You can call me Glocal Bot"]
+            "patterns":["what is your name","what should i call you","what can i call you"],
+            "responses":["my name is glocal Bot","i am glocal Bot","you can call me glocal Bot"]
         },
         {
             "tag":"introduce",
-            "patterns":["Introduce","Introduce yourself","Who are you?","What is your purpose?"],
-            "responses":["I am Glocal Bot. I am an Artificial Intelligence powered robot who can hear you and respond wisely. I can learn about you. One of the prominent feature of me is, I can announce the result of the events held in Rendezvous. Also I can identify students data using their id's. I know all the students of Jaamiaa Madinathunnoor. I am learning constantly to become more powerful. Thanks for developing me. Essalamu Alaykum"]
+            "patterns":["introduce","introduce yourself","who are you","what is your purpose"],
+            "responses":["i am glocal Bot. i am an artificial intelligence powered robot who can hear you and respond wisely. i can learn about you. One of the prominent feature of me is, i can announce the result of the events held in rendezvous. also i can identify students data using their id's. i know all the students of jaamiaa madinathunnoor. i am learning constantly to become more powerful. thanks for developing me. essalamu alaykum"]
         },
         {
             "tag":"rendezvous",
-            "patterns":["About Rendezvous","Tell about Rendezvous"],
-            "responses":["Rendezvous is the campus fest of Jaamia Madinathunnur. It's one of the most prominent event in India. Students from various campuses present their skills at Rendezvous venue."]
+            "patterns":["about rendezvous","tell about rendezvous"],
+            "responses":["rendezvous is the campus fest of jaamia madinathunnur. it's one of the most prominent event in india. Students from various campuses present their skills at rendezvous venue."]
         },
         {"tag":"markaz_garden",
     "patterns"
-:["What is Markaz Garden","Markaz Garden","Jamia"],
-"responses":["Markaz Garden Group of Institutions is involved in the process of moulding a sublime wing of specialized Islamic propagators. The college offers undergraduate programmes & students are endorsed with dual degree system. One from Madeenathunnoor College & the other from any national or international university . Religious scholars equally competent in worldly affairs are the need of the era.Along with strong emphasis on theology and spirituality, ample exposure to updated information,latest technical knowledge & modern trends in education are provided."]
+:["what is markaz garden","markaz garden","jamia","tell me about markaz garden"],
+"responses":["markaz garden group of institutions is involved in the process of moulding a sublime wing of specialized islamic propagators. the college offers undergraduate programmes & students are endorsed with dual degree system. One from madeenathunnoor college & the other from any national or international university . religious scholars equally competent in worldly affairs are the need of the era.along with strong emphasis on theology and spirituality, ample exposure to updated information,latest technical knowledge & modern trends in education are provided."]
 }
 
     ]
