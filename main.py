@@ -2,6 +2,7 @@ import pyttsx3
 import speech_recognition
 from neuralintents.main import GenericAssistant
 from result_fetch import get_result,read_json
+from utils import getProgramName, getStudentName
 
 speaker = pyttsx3.init()
 speaker.setProperty('rate', 110)
@@ -10,6 +11,7 @@ speaker.setProperty('voice', voices[0].id)
 
 recognizer = speech_recognition.Recognizer()
 
+get_result()
 
 
 def greet(response):
@@ -31,7 +33,16 @@ def tell_result(text):
     for program in programs['data']:
         if  program['name'].lower().replace(' ','') == response.lower().replace(' ',''):
             if program['resultDeclared'] == "1":
-                response = f"Result of {program['name']} is declared."
+                prList = read_json("prList.json")
+                result = []
+                for pr in prList['data']:
+                    if pr['programid'] == program['id'] and pr['rank'] != "0":
+                        result.append(pr)
+                        break
+                response = f"Result of {program['name']} is declared. {getStudentName(result[0]['studentid'])} is selected  with rank {result[0]['rank']}"
+                for i in range(1,len(result)):
+                    response += f" and {getStudentName(result[i]['studentid'])} is selected with rank {result[i]['rank']}"
+
                 break
             else:
                 response = f"Result of {program['name']} is not declared yet."
@@ -54,7 +65,6 @@ glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name
 # glocalbot.save_model()
 glocalbot.load_model()
 
-#get_result()
 
 while True:
     try:
