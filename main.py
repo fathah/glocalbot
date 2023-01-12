@@ -38,10 +38,12 @@ def tell_result(text):
                 for pr in prList['data']:
                     if pr['programid'] == program['id'] and pr['rank'] != "0":
                         result.append(pr)
-                        break
-                response = f"Result of {program['name']} is declared. {getStudentName(result[0]['studentid'])} is selected  with rank {result[0]['rank']}"
-                for i in range(1,len(result)):
-                    response += f" and {getStudentName(result[i]['studentid'])} is selected with rank {result[i]['rank']}"
+                resultSorted = sorted(result, key=lambda d: d['rank']) 
+
+                response = f"Result of {program['name']} is declared. {getStudentName(resultSorted[0]['studentid'])} is selected  with rank {resultSorted[0]['rank']}"
+                for i in range(1,len(resultSorted)):
+                    
+                    response += f". and {getStudentName(resultSorted[i]['studentid'])} is selected with rank {resultSorted[i]['rank']}"
 
                 break
             else:
@@ -61,8 +63,8 @@ mappings = {
     }
 
 glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
-# glocalbot.train_model()
-# glocalbot.save_model()
+#glocalbot.train_model()
+#glocalbot.save_model()
 glocalbot.load_model()
 
 
