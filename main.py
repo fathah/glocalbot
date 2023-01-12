@@ -47,8 +47,10 @@ def tell_result(text):
                 for i in range(1,len(resultSorted)):
                     
                     response += f". and {getStudentName(resultSorted[i]['studentid'])} is selected with rank {resultSorted[i]['rank']}"
-
+                    
+                response += "Congratulations for the winners."
                 break
+                
             else:
                 response = f"Result of {program['name']} is not declared yet."
                 break
