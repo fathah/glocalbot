@@ -73,7 +73,8 @@ def talkFromIntents(text):
             randomIndex = random.randint(0,len(intent['responses'])-1)
             mappings[intent['tag']](intent['responses'][randomIndex].lower())
         # else:
-        #     speaker.say(text)
+        #     duckres = duck_search(text)
+        #     speaker.say(duckres)
         #     speaker.runAndWait()
 
 speaker.say('Hello, I am  Glocal Bot. How can I assist you?')
