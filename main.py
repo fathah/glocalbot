@@ -22,6 +22,9 @@ def introduce(response):
     speaker.say(f'{response}')
     speaker.runAndWait()
 
+def markazGarden(response):
+    speaker.say(f'{response}')
+    speaker.runAndWait()
 
 def tell_name(response):
     speaker.say(f'{response}')
@@ -59,7 +62,8 @@ def tell_result(text):
 mappings = {
     "greetings":greet,
     "name":tell_name,
-    "introduce":introduce
+    "introduce":introduce,
+    "markaz_garden":markazGarden
     }
 
 glocalbot = GenericAssistant('intents.json',intent_methods= mappings, model_name="test_model")
