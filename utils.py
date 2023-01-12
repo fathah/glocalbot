@@ -15,3 +15,11 @@ def getProgramName(id):
             return program['name']
         else:
             pass
+
+def getCampusName(id):
+    campuses = read_json("campus.json")
+    for campus in campuses['data']:
+        if campus['campusId'] == id:
+            return campus['name']
+        else:
+            pass
