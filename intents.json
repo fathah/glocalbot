@@ -47,6 +47,45 @@
 :["what is markaz garden","markaz garden","jamia","tell me about markaz garden"],
 "responses":["markaz garden group of institutions is involved in the process of moulding a sublime wing of specialized islamic propagators. the college offers undergraduate programmes & students are endorsed with dual degree system. One from madeenathunnoor college & the other from any national or international university . religious scholars equally competent in worldly affairs are the need of the era.along with strong emphasis on theology and spirituality, ample exposure to updated information,latest technical knowledge & modern trends in education are provided."]
 }
-
+,
+{
+    "tag": "whatsup",
+    "patterns": [
+        "Whats up",
+        "Wazzup",
+        "How are you",
+        "sup","How you doing"
+    ],
+    "responses": [
+        "All good..What about you?"
+    ]
+},
+{
+    "tag": "haha",
+    "patterns": [
+        "haha",
+        "lol",
+        "rofl",
+        "lmao",
+        "thats funny"
+    ],
+    "responses": [
+        "Glad I could make you laugh !"
+    ]
+},
+{
+    "tag": "programmer",
+    "patterns": [
+        "Who made you",
+        "who designed you",
+        "who programmed you",
+        "who developed you",
+        "who is your father",
+        "develoeper"
+    ],
+    "responses": [
+        "I was developed by Glocal Robot Team."
+    ]
+}
     ]
 }
